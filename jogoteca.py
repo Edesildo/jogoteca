@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,redirect
 
 
 class Jogo:
@@ -11,7 +11,8 @@ class Jogo:
 jogo1 = Jogo('Tetris','Puzzle','Atari')
 jogo2 = Jogo('GOD','Rack n Slash','PS2')
 jogo3 = Jogo('Mortal combat','Luta','PS2')
-lista = [jogo1,jogo2,jogo3]
+jogo4 = Jogo('Lol','Moba','Pc')
+lista = [jogo1,jogo2,jogo3,jogo4]
 
 
 app = Flask(__name__)
@@ -31,6 +32,6 @@ def criar():
     console = request.form['console']
     jogo = Jogo(nome,categoria,console)
     lista.append(jogo)
-    return render_template('lista.html',titulo ='Jogos',jogos=lista)
+    return redirect('/')
 
 app.run(debug=True)
